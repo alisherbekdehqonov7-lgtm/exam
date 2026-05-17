@@ -1,0 +1,18 @@
+.sign-up-left {
+  background:
+    radial-gradient(
+      116.79% 109.81% at 20% 80%,
+      rgba(212, 162, 78, 0.15) 0%,
+      rgba(212, 162, 78, 0) 50%
+    ),
+    radial-gradient(
+      116.79% 109.81% at 80% 20%,
+      rgba(107, 175, 142, 0.2) 0%,
+      rgba(107, 175, 142, 0) 50%
+    ),
+    linear-gradient(136.76deg, #2d5443 0%, #1f2f28 100%);
+}
+
+.sign-up-right {
+  background: #fbf7f0;
+}
