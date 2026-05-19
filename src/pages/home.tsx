@@ -1,7 +1,26 @@
+import { useNavigate } from "react-router-dom";
 import Icon from "../components/ui/icon";
-import { genres, newArrivals, popularAuthors } from "../mock/books";
+import { genres } from "../mock/books";
+import { useFavorites } from "../hooks/useFavorites";
+import { useGetBooks } from "../hooks/api/useGetBooks";
+import { useGetAuthors } from "../hooks/api/useGetAuthors";
 
 const Home = () => {
+  const navigate = useNavigate();
+  const { books: apiBooks } = useGetBooks({
+    page: 1,
+    limit: 6,
+    sortBy: "newest",
+  });
+  const { authors } = useGetAuthors();
+  const { attachFavorites, toggleFavorite } = useFavorites();
+  const books = attachFavorites(apiBooks).map((book: any) => ({
+    ...book,
+    author:
+      typeof book.author === "object" ? book.author?.fullName : book.author,
+    gradient: book.gradient || "from-[#2F5A3F] to-[#1E3F2A]",
+  }));
+
   return (
     <>
       <section className="pt-6 mt-4 bg-gradient-to-br from-[#2B4A3A] via-[#1F3A2C] to-[#0F2419]">
@@ -69,24 +88,30 @@ const Home = () => {
             <h2 className="text-[#1F2F28] text-3xl md:text-4xl font-serif font-semibold">
               New Arrivals
             </h2>
-            <a
-              href="#"
+            <button
+              type="button"
+              onClick={() => navigate("/books")}
               className="flex items-center gap-1.5 text-[#1F2F28] text-sm font-medium hover:opacity-70 transition-opacity"
             >
               View all
               <Icon.arrowRight />
-            </a>
+            </button>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
-            {newArrivals.map((book) => (
+            {books.map((book) => (
               <div key={book.id} className="flex flex-col">
                 <div
                   className={`relative aspect-3/4 rounded-2xl bg-linear-to-br ${book.gradient} p-5 flex flex-col items-center justify-center text-center overflow-hidden`}
                 >
                   <button
                     type="button"
-                    aria-label="Add to favorites"
+                    aria-label={
+                      book.favorite
+                        ? "Remove from favorites"
+                        : "Add to favorites"
+                    }
+                    onClick={() => toggleFavorite(String(book.id))}
                     className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 hover:bg-white transition-colors flex items-center justify-center cursor-pointer"
                   >
                     {book.favorite ? (
@@ -142,23 +167,47 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-6">
-            {popularAuthors.map((author) => (
-              <div key={author.id} className="flex flex-col">
-                <div
-                  className={`w-24 h-24 rounded-full ${author.color} flex items-center justify-center mb-4 cursor-pointer hover:scale-105 transition-transform`}
-                >
-                  <span className="text-white font-serif text-2xl font-semibold">
-                    {author.initials}
-                  </span>
-                </div>
-                <h4 className="text-[#1F2F28] text-sm font-semibold">
-                  {author.name}
-                </h4>
-                <p className="text-[#9AA89F] text-xs mt-1">
-                  {author.books} books
-                </p>
-              </div>
-            ))}
+            {Array.isArray(authors) && authors.length > 0
+              ? authors.slice(0, 6).map((author: any) => {
+                  const initials = author.fullName
+                    ? author.fullName
+                        .split(" ")
+                        .map((n: string) => n[0])
+                        .join("")
+                        .toUpperCase()
+                    : "?";
+                  const colors = [
+                    "bg-[#2F6B4A]",
+                    "bg-[#9B4FB8]",
+                    "bg-[#B07A48]",
+                    "bg-[#4A7BC8]",
+                    "bg-[#D16A6A]",
+                    "bg-[#4FA89A]",
+                  ];
+                  const colorIndex =
+                    (author.id?.charCodeAt(0) || 0) % colors.length;
+
+                  return (
+                    <div key={author.id} className="flex flex-col">
+                      <button
+                        type="button"
+                        onClick={() => navigate(`/authors/${author.id}`)}
+                        className={`${colors[colorIndex]} w-24 h-24 rounded-full flex items-center justify-center mb-4 cursor-pointer hover:scale-105 transition-transform`}
+                      >
+                        <span className="text-white font-serif text-2xl font-semibold">
+                          {initials}
+                        </span>
+                      </button>
+                      <h4 className="text-[#1F2F28] text-sm font-semibold">
+                        {author.fullName}
+                      </h4>
+                      <p className="text-[#9AA89F] text-xs mt-1">
+                        {author.books || 12} books
+                      </p>
+                    </div>
+                  );
+                })
+              : null}
           </div>
         </div>
       </section>

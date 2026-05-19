@@ -1,8 +1,8 @@
-import { useState, useMemo } from "react";
+import { useMemo, useState } from "react";
 import Icon from "../components/ui/icon";
 import { useGetBooks } from "../hooks/api/useGetBooks";
+import { useFavorites } from "../hooks/useFavorites";
 
-// Fallback mock data
 const mockBooks = [
   {
     id: "1",
@@ -51,7 +51,7 @@ const BooksPage = () => {
   const [sortBy, setSortBy] = useState<
     "newest" | "oldest" | "price_asc" | "price_desc" | "rating" | "popularity"
   >("newest");
-  const [favorites, setFavorites] = useState<Set<string>>(new Set());
+  const { toggleFavorite, isFavorite } = useFavorites();
 
   const {
     books: apiBooks,
@@ -69,7 +69,6 @@ const BooksPage = () => {
     search: searchTerm || undefined,
   });
 
-  // Use mock data as fallback
   const books =
     Array.isArray(apiBooks) && apiBooks.length > 0 ? apiBooks : mockBooks;
   const totalPages = Math.ceil((total || mockBooks.length) / 18);
@@ -92,16 +91,6 @@ const BooksPage = () => {
     { id: "uzbek", name: "Uzbek", count: 234 },
   ];
 
-  const toggleFavorite = (bookId: string) => {
-    const newFavorites = new Set(favorites);
-    if (newFavorites.has(bookId)) {
-      newFavorites.delete(bookId);
-    } else {
-      newFavorites.add(bookId);
-    }
-    setFavorites(newFavorites);
-  };
-
   const handlePriceChange = (index: number, value: number) => {
     const newRange = [...priceRange];
     newRange[index] = value;
@@ -123,14 +112,13 @@ const BooksPage = () => {
     if (!Array.isArray(books)) return [];
     return books.map((book: any) => ({
       ...book,
-      isFavorite: favorites.has(book.id),
+      isFavorite: isFavorite(book.id),
     }));
-  }, [books, favorites]);
+  }, [books, isFavorite]);
 
   return (
     <div className="bg-white">
       <div className="container py-8">
-        {/* Search Bar */}
         <div className="mb-8">
           <label className="bg-[#FBF7F0] p-[12px_20px] rounded-[40px] flex items-center gap-3 w-full shadow-md">
             <Icon.searchIcon />
@@ -148,7 +136,6 @@ const BooksPage = () => {
         </div>
 
         <div className="flex gap-8">
-          {/* Filters Sidebar */}
           <div className="w-48">
             <div className="flex justify-between items-center mb-6">
               <h3 className="text-lg font-bold text-[#1F2F28]">Filters</h3>
@@ -160,7 +147,6 @@ const BooksPage = () => {
               </button>
             </div>
 
-            {/* Genre Filter */}
             <div className="mb-8">
               <h4 className="text-sm font-semibold text-[#1F2F28] mb-4 uppercase tracking-wide">
                 Genre
@@ -189,7 +175,6 @@ const BooksPage = () => {
               </div>
             </div>
 
-            {/* Price Range */}
             <div className="mb-8">
               <h4 className="text-sm font-semibold text-[#1F2F28] mb-4 uppercase tracking-wide">
                 Price Range
@@ -223,7 +208,6 @@ const BooksPage = () => {
               </div>
             </div>
 
-            {/* Rating Filter */}
             <div className="mb-8">
               <h4 className="text-sm font-semibold text-[#1F2F28] mb-4 uppercase tracking-wide">
                 Rating
@@ -264,7 +248,6 @@ const BooksPage = () => {
               </div>
             </div>
 
-            {/* Language Filter */}
             <div className="mb-8">
               <h4 className="text-sm font-semibold text-[#1F2F28] mb-4 uppercase tracking-wide">
                 Language
@@ -289,9 +272,7 @@ const BooksPage = () => {
             </div>
           </div>
 
-          {/* Main Content */}
           <div className="flex-1">
-            {/* Header with Sort */}
             <div className="flex justify-between items-center mb-8">
               <p className="text-sm text-[#6B7570]">
                 Showing 1-18 of {total || mockBooks.length} books
@@ -325,7 +306,6 @@ const BooksPage = () => {
               </div>
             </div>
 
-            {/* Books Grid */}
             {isPending && !books.length ? (
               <div className="grid grid-cols-4 gap-6">
                 {[...Array(12)].map((_, i) => (
@@ -407,7 +387,6 @@ const BooksPage = () => {
               </div>
             )}
 
-            {/* Pagination */}
             <div className="flex justify-center items-center gap-2">
               <button
                 onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}

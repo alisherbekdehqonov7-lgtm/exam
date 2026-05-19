@@ -271,5 +271,32 @@ const Icon = {
       <line x1="2" y1="16" x2="18" y2="16" stroke="#1F2F28" strokeWidth="1.5" />
     </svg>
   ),
+  image: () => (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        x="2"
+        y="2"
+        width="16"
+        height="16"
+        rx="2"
+        stroke="#1F2F28"
+        strokeWidth="1.5"
+      />
+      <circle cx="5.5" cy="5.5" r="1.5" fill="#1F2F28" />
+      <path
+        d="M2 14L7 9L12 14M12 14L18 8"
+        stroke="#1F2F28"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  ),
 };
 export default Icon;
