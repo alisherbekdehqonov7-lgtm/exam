@@ -1,0 +1,5 @@
+[
+  { "id": "cart_001", "userId": "usr_001", "bookId": "book_001", "quantity": 1, "createdAt": "2025-05-07T10:00:00.000Z" },
+  { "id": "cart_002", "userId": "usr_001", "bookId": "book_003", "quantity": 2, "createdAt": "2025-05-07T10:05:00.000Z" },
+  { "id": "cart_003", "userId": "usr_001", "bookId": "book_007", "quantity": 1, "createdAt": "2025-05-07T11:00:00.000Z" }
+]

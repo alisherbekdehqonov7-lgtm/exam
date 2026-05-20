@@ -1,0 +1,38 @@
+[
+  {
+    "id": "notif_001",
+    "userId": "usr_001",
+    "type": "new_book",
+    "title": "New book from Haruki Murakami",
+    "message": "\"The City and Its Uncertain Walls\" is now available",
+    "isRead": false,
+    "createdAt": "2025-05-08T08:00:00.000Z"
+  },
+  {
+    "id": "notif_002",
+    "userId": "usr_001",
+    "type": "price_drop",
+    "title": "Price drop alert!",
+    "message": "\"Project Hail Mary\" is now $12.99 (was $19.99)",
+    "isRead": false,
+    "createdAt": "2025-05-08T05:00:00.000Z"
+  },
+  {
+    "id": "notif_003",
+    "userId": "usr_001",
+    "type": "author_update",
+    "title": "Author update",
+    "message": "Neil Gaiman posted a new blog entry",
+    "isRead": true,
+    "createdAt": "2025-05-07T10:00:00.000Z"
+  },
+  {
+    "id": "notif_004",
+    "userId": "usr_001",
+    "type": "review_like",
+    "title": "Your review got 12 likes",
+    "message": "Your review of \"The Midnight Library\" is popular",
+    "isRead": true,
+    "createdAt": "2025-05-06T14:00:00.000Z"
+  }
+]

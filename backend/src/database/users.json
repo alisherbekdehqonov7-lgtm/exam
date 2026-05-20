@@ -1,0 +1,58 @@
+[
+  {
+    "id": "usr_003",
+    "fullName": "James Thompson",
+    "username": "james_t",
+    "email": "james@example.com",
+    "password": "$2b$10$XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "bio": "Literature professor and casual reader.",
+    "phone": "+44 20 7946 0958",
+    "country": "UK",
+    "avatar": null,
+    "role": "user",
+    "createdAt": "2024-06-10T14:00:00.000Z",
+    "updatedAt": "2025-03-28T09:00:00.000Z"
+  },
+  {
+    "id": "usr_64aa5c65",
+    "fullName": "Islomjon",
+    "username": "islomjonaka",
+    "email": "islomjonaka@gmail.com",
+    "password": "$2b$10$vnLWKA7PRUQ5qyJNqs7xPuSXMRvtc9e1DOGwgfQzbgUnwYqs6F7nu",
+    "bio": "",
+    "phone": "",
+    "country": "",
+    "avatar": null,
+    "role": "admin",
+    "createdAt": "2026-05-09T09:59:22.491Z",
+    "updatedAt": "2026-05-09T09:59:22.492Z"
+  },
+  {
+    "id": "usr_c7293e13",
+    "fullName": "Islomjon",
+    "username": "hakker007",
+    "email": "hakker007@gmail.com",
+    "password": "$2b$10$Bb1fP8bvrZ20juVHT8LZcu49.3EyDhobcppilA099YO4nC80JVTKe",
+    "bio": "",
+    "phone": "",
+    "country": "",
+    "avatar": null,
+    "role": "user",
+    "createdAt": "2026-05-09T10:01:11.310Z",
+    "updatedAt": "2026-05-09T10:01:11.310Z"
+  },
+  {
+    "id": "usr_0090fde0",
+    "fullName": "John Doe",
+    "username": "John",
+    "email": "John@gmail.com",
+    "password": "$2b$10$jXOhOZSmWInsesLYE/3zsuVQkTHqp838rePhlcUZL8Y0jmah6WZLq",
+    "bio": "",
+    "phone": "",
+    "country": "",
+    "avatar": null,
+    "role": "user",
+    "createdAt": "2026-05-20T05:11:14.610Z",
+    "updatedAt": "2026-05-20T05:11:14.611Z"
+  }
+]

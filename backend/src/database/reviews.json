@@ -1,0 +1,42 @@
+[
+  {
+    "id": "rev_001",
+    "userId": "usr_001",
+    "bookId": "book_001",
+    "rating": 5,
+    "text": "An incredible book that makes you think about the infinite paths life could take. Highly recommended for anyone feeling stuck.",
+    "createdAt": "2025-05-06T10:00:00.000Z"
+  },
+  {
+    "id": "rev_002",
+    "userId": "usr_002",
+    "bookId": "book_001",
+    "rating": 5,
+    "text": "This book made me reconsider every 'what if' moment in my life. Matt Haig has a gift for making the profound feel accessible.",
+    "createdAt": "2025-03-12T14:00:00.000Z"
+  },
+  {
+    "id": "rev_003",
+    "userId": "usr_003",
+    "bookId": "book_001",
+    "rating": 4,
+    "text": "A beautifully written and thoughtful novel. The concept is creative and the execution is mostly wonderful, though it felt slightly predictable toward the end.",
+    "createdAt": "2025-02-28T09:00:00.000Z"
+  },
+  {
+    "id": "rev_004",
+    "userId": "usr_001",
+    "bookId": "book_003",
+    "rating": 5,
+    "text": "Andy Weir has done it again! The science is fascinating and the humor is perfectly timed. Rocky is the best character in fiction.",
+    "createdAt": "2025-04-20T11:00:00.000Z"
+  },
+  {
+    "id": "rev_005",
+    "userId": "usr_002",
+    "bookId": "book_007",
+    "rating": 5,
+    "text": "Circe is a masterpiece of feminist retelling. Madeline Miller brings Greek mythology to life in the most human way possible.",
+    "createdAt": "2025-03-15T16:00:00.000Z"
+  }
+]
